@@ -24,7 +24,7 @@ import net.tracknalysis.common.notification.NotificationType;
  *
  * @author David Valeri
  */
-public class AndroidNotificationStrategy implements NotificationStrategy {
+public class AndroidNotificationStrategy<T extends NotificationType> implements NotificationStrategy<T> {
 
     private final Handler handler;
     
@@ -34,12 +34,12 @@ public class AndroidNotificationStrategy implements NotificationStrategy {
     }
 
     @Override
-    public void sendNotification(NotificationType notificationType) {
+    public void sendNotification(T notificationType) {
         handler.obtainMessage(notificationType.getNotificationTypeId(), null).sendToTarget();
     }
 
     @Override
-    public void sendNotification(NotificationType notificationType, Object messageBody) {
+    public void sendNotification(T notificationType, Object messageBody) {
         handler.obtainMessage(notificationType.getNotificationTypeId(), messageBody)
             .sendToTarget();
     }
