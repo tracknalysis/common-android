@@ -75,13 +75,13 @@ Authors: David Valeri
   </repositories>
   
   <properties>
-    <platform.version>2.2.1</platform.version>
+    <platform.version>2.2_r3</platform.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
   <dependencies>
     <dependency>
-      <groupId>com.google.android</groupId>
+      <groupId>android</groupId>
       <artifactId>android</artifactId>
       <version>${platform.version}</version>
       <scope>provided</scope>
@@ -106,4 +106,13 @@ Authors: David Valeri
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-remote-resources-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 </project>
