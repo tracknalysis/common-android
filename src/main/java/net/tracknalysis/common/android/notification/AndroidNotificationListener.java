@@ -16,7 +16,7 @@
 package net.tracknalysis.common.android.notification;
 
 import android.os.Handler;
-import net.tracknalysis.common.notification.NotificationStrategy;
+import net.tracknalysis.common.notification.NotificationListener;
 import net.tracknalysis.common.notification.NotificationType;
 
 /**
@@ -24,22 +24,22 @@ import net.tracknalysis.common.notification.NotificationType;
  *
  * @author David Valeri
  */
-public class AndroidNotificationStrategy<T extends NotificationType> implements NotificationStrategy<T> {
+public class AndroidNotificationListener<T extends NotificationType> implements NotificationListener<T> {
 
     private final Handler handler;
     
-    public AndroidNotificationStrategy(Handler handler) {
+    public AndroidNotificationListener(Handler handler) {
         super();
         this.handler = handler;
     }
 
     @Override
-    public void sendNotification(T notificationType) {
+    public void onNotification(T notificationType) {
         handler.obtainMessage(notificationType.getNotificationTypeId(), null).sendToTarget();
     }
 
     @Override
-    public void sendNotification(T notificationType, Object messageBody) {
+    public void onNotification(T notificationType, Object messageBody) {
         handler.obtainMessage(notificationType.getNotificationTypeId(), messageBody)
             .sendToTarget();
     }
